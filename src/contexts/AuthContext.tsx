@@ -1,4 +1,5 @@
 "use client";
+import { redirect } from "next/navigation";
 import { createContext, useContext, useState } from "react";
 import type { ReactNode } from "react";
 
@@ -30,6 +31,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
   const logout = () => {
     setIsAuthenticated(false);
+    redirect("/auth/login");
   };
 
   return (

@@ -8,6 +8,7 @@ import { useAuth } from "@/contexts/AuthContext";
 import { useState } from "react";
 import { Building2 } from "lucide-react";
 import { Card } from "./ui/card";
+import { useRouter } from "next/navigation";
 
 export function LoginForm({
   className,
@@ -15,6 +16,7 @@ export function LoginForm({
 }: React.ComponentProps<"div">) {
   const { login } = useAuth();
   const [isLoading, setIsLoading] = useState(false);
+  const router = useRouter();
 
   async function onSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -26,6 +28,7 @@ export function LoginForm({
 
     try {
       await login(email, password);
+      router.replace("/dashboard");
     } catch (error) {
       console.error("Login failed:", error);
     } finally {
