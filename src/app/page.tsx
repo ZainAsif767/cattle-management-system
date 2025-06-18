@@ -1,9 +1,5 @@
-import { ModeToggle } from "@/components/mode-toggle";
+import { redirect } from "next/navigation";
 
 export default function Home() {
-  return (
-    <div className="flex flex-col items-center justify-center h-screen">
-      <ModeToggle />
-    </div>
-  );
+  redirect("/auth/login");
 }
